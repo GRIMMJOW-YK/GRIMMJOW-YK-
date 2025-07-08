@@ -1,9 +1,10 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GRIMMJOW-YK</title>
-  <link rel="icon" href="https://i.imgur.com/qZP7It9.png" type="image/png" />
+  <link rel="icon" href="https://cdn.ironman.my.id/i/42b7oj.jpg" />
   <style>
     body {
       background-color: #111;
@@ -11,6 +12,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      transition: background-color 0.3s, color 0.3s;
     }
     header {
       text-align: center;
@@ -33,6 +35,10 @@
       border-radius: 10px;
       margin: 1em;
       padding: 1em;
+      transition: transform 0.3s;
+    }
+    .post:hover {
+      transform: scale(1.01);
     }
     .post img, .post video {
       max-width: 100%;
@@ -43,31 +49,111 @@
       font-size: 0.9em;
       margin-top: 0.5em;
     }
+    .footer {
+      text-align: center;
+      padding: 1em;
+      font-size: 0.9em;
+      background-color: #222;
+      color: #888;
+    }
+    .dark-mode-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 0.5em 1em;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .dark {
+      background-color: #fff;
+      color: #111;
+    }
+    .dark .post {
+      background-color: #f3f3f3;
+    }
   </style>
 </head>
 <body>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Mode</button>
   <header>
-    <img src="https://freeimage.host/i/F0ZEsJ1" alt="GRIMMJOW-YK Logo">
+    <img src="https://cdn.ironman.my.id/i/42b7oj.jpg" alt="GRIMMJOW-YK Logo">
     <h1>GRIMMJOW-YK</h1>
-  </header>  <main>
-    <div class="post">
-      <img src="https://freeimage.host/images/2025/07/08/F0ZEsJ1.jpeg" alt="Heart vs Brain" />
-      <h2>Our LIFE!</h2>
-      <p>
-        In our life, not everyone will stay with us forever. Even the ones we love the most will leave us one day. Life is big, and everything changes with time and situations. Some people who were once close to us… we may never see them again. That’s how life is — nothing is permanent, everything keeps changing.
-      </p>
-      <p><strong>Posted by Vaishnav</strong></p>
-      <p class="timestamp">July 5, 2025, 12:39 AM IST</p>
-    </div><div class="post">
-  <video controls>
-    <source src="your_video_url_here.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <h2>X ❤️</h2>
-  <p><strong>Posted by Vaishnav</strong></p>
-  <p class="timestamp">July 7, 2025, 11:27 AM IST</p>
-</div>
+  </header>
 
-  </main>
+  <main id="post-container"></main>
+
+  <footer class="footer">
+    © 2025 GRIMMJOW-YK | Follow on <a href="https://instagram.com" target="_blank" style="color: #aaa;">Instagram</a>
+  </footer>
+
+  <script>
+    const posts = [
+      {
+        type: 'image',
+        title: 'Our LIFE!',
+        content: 'In our life, not everyone will stay with us forever. Even the ones we love the most will leave us one day. Life is big, and everything changes with time and situations...',
+        media: 'https://freeimage.host/images/2025/07/08/F0ZEsJ1.jpeg',
+        date: 'July 5, 2025, 12:39 AM IST'
+      },
+      {
+        type: 'video',
+        title: 'Ggrimmjow ❤️',
+        content: '',
+        media: 'https://cdn.ironman.my.id/i/z8qqze.mp4',
+        date: 'July 7, 2025, 11:27 AM IST'
+      },
+      {
+        type: 'image',
+        title: 'Silent Moments',
+        content: 'Sometimes silence speaks louder than words. In this stillness, we find the truth we hide from ourselves.',
+        media: 'https://cdn.ironman.my.id/i/do9lv3.jpg',
+        date: 'July 8, 2025, 10:00 PM IST'
+      },
+      {
+        type: 'video',
+        title: 'Feel the Song 🎵',
+        content: 'Let the music speak.',
+        media: 'https://cdn.ironman.my.id/i/g1zojs.mp4',
+        date: 'July 9, 2025, 8:45 PM IST'
+      }
+    ];
+
+    const container = document.getElementById('post-container');
+
+    posts.forEach(post => {
+      const postEl = document.createElement('div');
+      postEl.className = 'post';
+
+      if (post.type === 'image') {
+        postEl.innerHTML = `
+          <img src="${post.media}" alt="${post.title}">
+          <h2>${post.title}</h2>
+          <p>${post.content}</p>
+          <p><strong>Posted by Yadhu</strong></p>
+          <p class="timestamp">${post.date}</p>
+        `;
+      } else if (post.type === 'video') {
+        postEl.innerHTML = `
+          <video controls>
+            <source src="${post.media}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <h2>${post.title}</h2>
+          <p>${post.content}</p>
+          <p><strong>Posted by Yadhu</strong></p>
+          <p class="timestamp">${post.date}</p>
+        `;
+      }
+
+      container.appendChild(postEl);
+    });
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
 </body>
 </html>
