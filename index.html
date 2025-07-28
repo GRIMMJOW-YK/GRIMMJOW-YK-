@@ -1,86 +1,122 @@
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ✅ Google Search Console Verification -->
-  <meta name="google-site-verification" content="afPH_G2_rJi4xWCKre0kcfwp5dEATJfd6x0k_EMO8FQ" />
-
-  <!-- ✅ SEO: Title and Description -->
-  <title>GRIMMJOW-YK</title>
-  <meta name="description" content="Welcome to the official website of GRIMMJOW-YK. Explore creative videos, images, and powerful posts." />
-
-  <!-- ✅ Favicon -->
-  <link rel="icon" href="https://cdn.ironman.my.id/i/42b7oj.jpg" />
-
-  <!-- ✅ Styling -->
-  <style>
-    body {
-      background-color: #111;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    header {
-      text-align: center;
-      padding: 1em;
-      background-color: #222;
-    }
-    header img {
-      width: 96px;
-      height: 96px;
-      border-radius: 12px;
-      border: 2px solid #555;
-    }
-    h1 {
-      margin-top: 0.5em;
-      font-size: 2em;
-      color: #f33;
-    }
-    .post {
-      background-color: #1c1c1c;
-      border-radius: 10px;
-      margin: 1em;
-      padding: 1em;
-      transition: transform 0.3s;
-    }
-    .post:hover {
-      transform: scale(1.01);
-    }
-    .post img, .post video {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-    .timestamp {
-      color: #aaa;
-      font-size: 0.9em;
-      margin-top: 0.5em;
-    }
-    .footer {
-      text-align: center;
-      padding: 1em;
-      font-size: 0.9em;
-      background-color: #222;
-      color: #888;
-    }
-    .dark-mode-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      padding: 0.5em 1em;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .dark {
-      background-color: #fff;
-      color: #111;
-    }
-    .dark .post {
-      background-color: #f3f3f3;
-    }
-  </style>
+    <title>Kundan & Saidalavi Rainbow Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 8s ease infinite;
+        }
+        .special-guest {
+            font-size: 1.5em;
+            margin: 20px 0;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        .game-container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        button {
+            background: linear-gradient(45deg, #ff0000, #00ff00);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: buttonGlow 2s infinite;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00ff00;
+        }
+        @keyframes rainbow {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6; }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0073e6, 0 0 40px #0073e6; }
+        }
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 0 5px #ff0000; }
+            50% { box-shadow: 0 0 20px #00ff00; }
+            100% { box-shadow: 0 0 5px #ff0000; }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 50%;
+            animation: confetti 5s ease-in-out infinite;
+        }
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
 </head>
+<body>
+    <div class="game-container">
+        <h1>Saidalavi's Game</h1>
+        <div class="special-guest">
+            Special Guest: Kundan Saidutty Makan Safvan Gay
+        </div>
+        
+        <p>Who is the champion of Pollachi?</p>
+        <button onclick="correctAnswer()">Saidalavi</button>
+        <button onclick="wrongAnswer()">Other Player</button>
+    </div>
+
+    <script>
+        // Rainbow effect for buttons
+        function correctAnswer() {
+            alert("✅ Correct! Saidalavi is the champion!");
+            createConfetti();
+        }
+        function wrongAnswer() {
+            alert("❌ Wrong! Try again!");
+        }
+        
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                document.body.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
